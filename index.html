@@ -4,71 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ProResume Builder</title>
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset and Base Styles */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; transition: background 0.3s, color 0.3s; padding-bottom: 150px; }
-    h1 { text-align: center; margin: 20px 0; }
-    button { cursor: pointer; }
-    a { text-decoration: none; }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family:'Poppins',sans-serif; background:#f9f9f9; color:#333; transition: background 0.3s, color 0.3s; padding-bottom:180px; }
+    h1,h2 { text-align:center; margin:20px 0; }
+    button { cursor:pointer; }
+    a { text-decoration:none; }
 
-    /* Container */
-    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    .container { max-width:800px; margin:0 auto; padding:20px; }
 
-    /* Start Building Button */
-    #startBuilding { display: block; margin: 20px auto; padding: 12px 25px; font-size: 16px; border:none; border-radius: 8px; background: #0077b5; color: #fff; transition: background 0.3s; }
-    #startBuilding:hover { background: #005f8c; }
+    /* Start Building */
+    #startBuilding { display:block; margin:20px auto; padding:12px 25px; font-size:16px; border:none; border-radius:8px; background:#0077b5; color:#fff; transition:background 0.3s; }
+    #startBuilding:hover { background:#005f8c; }
 
-    /* Form Section */
-    #builder { display: none; margin-top: 20px; }
-    .form-group { margin-bottom: 15px; }
-    label { display: block; margin-bottom: 5px; font-weight: 600; }
-    input, textarea { width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; }
+    /* Form */
+    #builder { display:none; margin-top:20px; }
+    .form-group { margin-bottom:15px; }
+    label { display:block; margin-bottom:5px; font-weight:600; }
+    input, textarea, select { width:100%; padding:8px; border-radius:5px; border:1px solid #ccc; }
+
+    /* Templates & Themes */
+    #templateTheme { margin-top:20px; }
+    .template-option { margin-bottom:10px; }
 
     /* Live Preview */
-    #livePreview { border:1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background: #fff; min-height: 150px; }
+    #livePreview { border:1px solid #ccc; padding:15px; margin-top:20px; border-radius:8px; background:#fff; min-height:200px; transition: background 0.3s, color 0.3s; }
 
     /* Dark Mode */
-    body.dark-mode { background: #1e1e1e; color: #ccc; }
-    body.dark-mode input, body.dark-mode textarea { background: #333; color: #ccc; border-color: #555; }
-    body.dark-mode #livePreview { background: #2c2c2c; border-color: #555; }
+    body.dark-mode { background:#1e1e1e; color:#ccc; }
+    body.dark-mode input, body.dark-mode textarea, body.dark-mode select { background:#333; color:#ccc; border-color:#555; }
+    body.dark-mode #livePreview { background:#2c2c2c; border-color:#555; }
 
     /* Footer */
     footer { text-align:center; margin-top:50px; padding:20px; font-size:14px; border-top:1px solid #ddd; transition: color 0.3s, border-color 0.3s; }
-    footer a { margin: 0 10px; text-decoration: none; font-weight: bold; vertical-align: middle; }
-    footer img { width: 18px; vertical-align: middle; margin-right: 5px; transition: filter 0.3s; }
-    body.dark-mode footer { color: #ccc; border-color: #444; }
+    footer a { margin:0 10px; font-weight:bold; vertical-align:middle; }
+    footer img { width:18px; vertical-align:middle; margin-right:5px; transition:filter 0.3s; }
+    body.dark-mode footer { color:#ccc; border-color:#444; }
     body.dark-mode footer img { filter: invert(100%); }
 
     /* Floating Dark Mode Toggle */
     #darkModeToggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      border-radius: 25px;
-      padding: 10px 15px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background-color:#333;
+      color:#fff;
+      border:none;
+      border-radius:25px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-weight:bold;
+      box-shadow:0 4px 6px rgba(0,0,0,0.2);
       transition: background 0.3s, color 0.3s;
-      z-index: 1000;
+      z-index:1000;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <h1>ProResume Builder</h1>
-
-    <!-- Start Building Button -->
     <button id="startBuilding">Start Building</button>
 
-    <!-- Builder Form -->
     <div id="builder">
       <div class="form-group">
         <label for="fullName">Full Name</label>
@@ -82,10 +79,29 @@
         <label for="summary">Professional Summary</label>
         <textarea id="summary" rows="4" placeholder="Write a short summary"></textarea>
       </div>
+
+      <!-- Templates & Themes -->
+      <div id="templateTheme">
+        <div class="template-option">
+          <label for="templateSelect">Choose Template</label>
+          <select id="templateSelect">
+            <option value="classic">Classic</option>
+            <option value="modern">Modern</option>
+            <option value="minimal">Minimal</option>
+          </select>
+        </div>
+        <div class="template-option">
+          <label for="themeSelect">Choose Theme Color</label>
+          <select id="themeSelect">
+            <option value="#0077b5">Blue</option>
+            <option value="#25D366">Green</option>
+            <option value="#FF6B6B">Red</option>
+          </select>
+        </div>
+      </div>
     </div>
 
-    <!-- Live Preview -->
-    <h2 style="margin-top:30px;">Live Preview</h2>
+    <h2>Live Preview</h2>
     <div id="livePreview">
       <p>Start building your resume...</p>
     </div>
@@ -93,7 +109,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>Built by <strong>Kev Okafor</strong></p>
+    <p>Built with ❤️ by <strong>Kev Okafor</strong></p>
     <div>
       <a href="https://wa.me/2349159651463" target="_blank" style="color:#25D366;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">WhatsApp
@@ -101,14 +117,17 @@
       <a href="https://github.com/okaforkev" target="_blank" style="color:#333;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">GitHub
       </a>
-      </div>
+      <a href="https://linkedin.com/in/kevokafor" target="_blank" style="color:#0077b5;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">LinkedIn
+      </a>
+    </div>
   </footer>
 
   <!-- Dark Mode Toggle -->
   <button id="darkModeToggle">🌙 Dark Mode</button>
 
   <script>
-    // Start Building Button
+    // Toggle Builder
     const startBtn = document.getElementById('startBuilding');
     const builder = document.getElementById('builder');
     startBtn.addEventListener('click', () => {
@@ -116,23 +135,34 @@
       startBtn.textContent = builder.style.display === 'block' ? 'Hide Builder' : 'Start Building';
     });
 
-    // Live Preview
+    // Form Inputs & Preview
     const fullName = document.getElementById('fullName');
     const email = document.getElementById('email');
     const summary = document.getElementById('summary');
+    const templateSelect = document.getElementById('templateSelect');
+    const themeSelect = document.getElementById('themeSelect');
     const livePreview = document.getElementById('livePreview');
 
     function updatePreview() {
+      let templateClass = templateSelect.value;
+      livePreview.style.borderColor = themeSelect.value;
       livePreview.innerHTML = `
-        <h3>${fullName.value || 'Your Name'}</h3>
+        <h3 style="color:${themeSelect.value};">${fullName.value || 'Your Name'}</h3>
         <p><strong>Email:</strong> ${email.value || 'your.email@example.com'}</p>
         <p>${summary.value || 'Professional summary goes here...'}</p>
+        <p><em>Template: ${templateSelect.options[templateSelect.selectedIndex].text}</em></p>
       `;
+      // Add template-specific styling
+      if(templateClass === 'modern') livePreview.style.fontFamily = "'Poppins', sans-serif";
+      else if(templateClass === 'minimal') livePreview.style.fontFamily = "Arial, sans-serif";
+      else livePreview.style.fontFamily = "'Times New Roman', serif";
     }
 
     fullName.addEventListener('input', updatePreview);
     email.addEventListener('input', updatePreview);
     summary.addEventListener('input', updatePreview);
+    templateSelect.addEventListener('change', updatePreview);
+    themeSelect.addEventListener('change', updatePreview);
 
     // Dark Mode Toggle
     const toggle = document.getElementById('darkModeToggle');
@@ -149,7 +179,5 @@
       }
     });
   </script>
-
 </body>
 </html>
-
