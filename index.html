@@ -1,237 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ProResume Builder</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-* {box-sizing:border-box; margin:0; padding:0;}
-body {font-family:'Poppins',sans-serif; background:#f9f9f9; color:#333; transition: background 0.3s, color 0.3s; padding-bottom:200px;}
-h1,h2 {text-align:center; margin:20px 0;}
-button {cursor:pointer;}
-a {text-decoration:none;}
+  <meta charset="UTF-8">
+  <title>ProResume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.container {max-width:900px; margin:0 auto; padding:20px;}
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 
-/* Start Button */
-#startBuilding {display:block; margin:20px auto; padding:12px 25px; font-size:16px; border:none; border-radius:8px; background:#0077b5; color:#fff; transition:background 0.3s;}
-#startBuilding:hover {background:#005f8c;}
-
-/* Builder Form */
-#builder {display:none; margin-top:20px;}
-.form-group {margin-bottom:15px;}
-label {display:block; margin-bottom:5px; font-weight:600;}
-input, textarea, select {width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;}
-
-/* Collage-style sections */
-.section {border:1px solid #ccc; padding:15px; margin-bottom:15px; border-radius:8px; background:#fff; transition: background 0.3s, border-color 0.3s;}
-.section h3 {margin-bottom:10px; color:#0077b5;}
-
-/* Live Preview */
-#livePreview {border:1px solid #ccc; padding:15px; margin-top:20px; border-radius:8px; background:#fff; min-height:250px; transition: background 0.3s, color 0.3s;}
-
-/* Dark Mode */
-body.dark-mode {background:#1e1e1e; color:#ccc;}
-body.dark-mode input, body.dark-mode textarea, body.dark-mode select {background:#333; color:#ccc; border-color:#555;}
-body.dark-mode #livePreview {background:#2c2c2c; border-color:#555;}
-body.dark-mode .section {background:#2c2c2c; border-color:#555;}
-
-/* Footer */
-footer {text-align:center; margin-top:50px; padding:20px; font-size:14px; border-top:1px solid #ddd; transition: color 0.3s, border-color 0.3s;}
-footer a {margin:0 10px; font-weight:bold; vertical-align:middle;}
-footer img {width:18px; vertical-align:middle; margin-right:5px; transition:filter 0.3s;}
-body.dark-mode footer {color:#ccc; border-color:#444;}
-body.dark-mode footer img {filter: invert(100%);}
-
-/* Floating Dark Mode Toggle */
-#darkModeToggle {position:fixed; bottom:20px; right:20px; background-color:#333; color:#fff; border:none; border-radius:25px; padding:10px 15px; cursor:pointer; font-weight:bold; box-shadow:0 4px 6px rgba(0,0,0,0.2); transition: background 0.3s, color 0.3s; z-index:1000;}
-
-/* Download Button */
-#downloadBtn {display:block; margin:20px auto; padding:12px 25px; font-size:16px; border:none; border-radius:8px; background:#25D366; color:#fff; transition:background 0.3s;}
-#downloadBtn:hover {background:#1DA851;}
-</style>
+  <!-- PDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
-<div class="container">
+
   <h1>ProResume Builder</h1>
-  <button id="startBuilding">Start Building</button>
 
-  <div id="builder">
-    <!-- Personal Info -->
-    <div class="section">
-      <h3>Personal Information</h3>
-      <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" placeholder="Enter your full name">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email">
-      </div>
+  <div class="container">
+
+    <!-- FORM -->
+    <div class="form-box">
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="text" id="job" placeholder="Job Title">
+      <textarea id="summary" placeholder="Professional Summary"></textarea>
     </div>
 
-    <!-- Education -->
-    <div class="section">
-      <h3>Education</h3>
-      <div class="form-group">
-        <label for="edu1">School / University</label>
-        <input type="text" id="edu1" placeholder="Enter school name">
-      </div>
-      <div class="form-group">
-        <label for="eduYear1">Year</label>
-        <input type="text" id="eduYear1" placeholder="e.g., 2018 - 2022">
-      </div>
+    <!-- PREVIEW -->
+    <div class="preview-box" id="preview">
+      <h2 id="pName"></h2>
+      <p id="pJob"></p>
+      <hr>
+      <p id="pSummary"></p>
+
+      <button id="downloadBtn">Download PDF</button>
     </div>
 
-    <!-- Work Experience -->
-    <div class="section">
-      <h3>Work Experience</h3>
-      <div class="form-group">
-        <label for="work1">Company / Role</label>
-        <input type="text" id="work1" placeholder="Enter company / role">
-      </div>
-      <div class="form-group">
-        <label for="workYear1">Year</label>
-        <input type="text" id="workYear1" placeholder="e.g., 2022 - Present">
-      </div>
-    </div>
-
-    <!-- Skills -->
-    <div class="section">
-      <h3>Skills</h3>
-      <div class="form-group">
-        <label for="skills">Enter skills (comma separated)</label>
-        <input type="text" id="skills" placeholder="e.g., HTML, CSS, JS">
-      </div>
-    </div>
-
-    <!-- Templates & Themes -->
-    <div class="section">
-      <h3>Templates & Themes</h3>
-      <div class="form-group">
-        <label for="templateSelect">Template Style</label>
-        <select id="templateSelect">
-          <option value="classic">Classic</option>
-          <option value="modern">Modern</option>
-          <option value="minimal">Minimal</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="themeSelect">Theme Color</label>
-        <select id="themeSelect">
-          <option value="#0077b5">Blue</option>
-          <option value="#25D366">Green</option>
-          <option value="#FF6B6B">Red</option>
-        </select>
-      </div>
-    </div>
   </div>
 
-  <h2>Live Preview</h2>
-  <div id="livePreview">
-    <p>Start building your resume...</p>
-  </div>
-
-  <button id="downloadBtn">Download PDF</button>
-</div>
-
-<!-- Footer -->
-<footer>
-  <p>Built by <strong>Kev Okafor</strong></p>
-  <div>
-    <a href="https://wa.me/2349159651463" target="_blank" style="color:#25D366;">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">WhatsApp
-    </a>
-    <a href="https://github.com/okaforkev" target="_blank" style="color:#333;">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">GitHub
-    </a>
-  </div>
-</footer>
-
-<button id="darkModeToggle">🌙 Dark Mode</button>
-
-<!-- jsPDF CDN for PDF download -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<script>
-const startBtn = document.getElementById('startBuilding');
-const builder = document.getElementById('builder');
-startBtn.addEventListener('click', ()=>{
-  builder.style.display = builder.style.display==='none'?'block':'none';
-  startBtn.textContent = builder.style.display==='block'?'Hide Builder':'Start Building';
-});
-
-// Inputs
-const inputs = {
-  fullName: document.getElementById('fullName'),
-  email: document.getElementById('email'),
-  edu1: document.getElementById('edu1'),
-  eduYear1: document.getElementById('eduYear1'),
-  work1: document.getElementById('work1'),
-  workYear1: document.getElementById('workYear1'),
-  skills: document.getElementById('skills'),
-  templateSelect: document.getElementById('templateSelect'),
-  themeSelect: document.getElementById('themeSelect')
-};
-
-const livePreview = document.getElementById('livePreview');
-
-function updatePreview(){
-  let color = inputs.themeSelect.value;
-  livePreview.style.borderColor=color;
-  livePreview.style.color=color;
-  if(inputs.templateSelect.value==='modern') livePreview.style.fontFamily="'Poppins', sans-serif";
-  else if(inputs.templateSelect.value==='minimal') livePreview.style.fontFamily="Arial, sans-serif";
-  else livePreview.style.fontFamily="'Times New Roman', serif";
-
-  livePreview.innerHTML=`
-    <h2 style="color:${color}">${inputs.fullName.value||'Your Name'}</h2>
-    <p><strong>Email:</strong> ${inputs.email.value||'your.email@example.com'}</p>
-    <h3>Education</h3>
-    <p>${inputs.edu1.value||'School / University'} (${inputs.eduYear1.value||'Year'})</p>
-    <h3>Work Experience</h3>
-    <p>${inputs.work1.value||'Company / Role'} (${inputs.workYear1.value||'Year'})</p>
-    <h3>Skills</h3>
-    <p>${inputs.skills.value||'Skills go here...'}</p>
-  `;
-}
-
-for(let key in inputs){
-  inputs[key].addEventListener('input', updatePreview);
-  if(inputs[key].tagName==='SELECT') inputs[key].addEventListener('change', updatePreview);
-}
-
-// Dark Mode
-const toggle = document.getElementById('darkModeToggle');
-toggle.addEventListener('click', ()=>{
-  document.body.classList.toggle('dark-mode');
-  if(document.body.classList.contains('dark-mode')){
-    toggle.textContent='☀️ Light Mode';
-    toggle.style.backgroundColor='#fff';
-    toggle.style.color='#333';
-  }else{
-    toggle.textContent='🌙 Dark Mode';
-    toggle.style.backgroundColor='#333';
-    toggle.style.color='#fff';
-  }
-});
-
-// Download PDF
-const downloadBtn = document.getElementById('downloadBtn');
-downloadBtn.addEventListener('click', ()=>{
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  doc.html(livePreview, {
-    callback: function (doc) {
-      doc.save(`${inputs.fullName.value||'resume'}.pdf`);
-    },
-    x:10,
-    y:10,
-    width:180,
-    windowWidth: livePreview.scrollWidth
-  });
-});
-</script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
+
