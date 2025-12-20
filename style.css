@@ -1,71 +1,100 @@
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --bg-color: #f4f4f4;
+  --text-color: #111;
+  --secondary-color: #555;
+  --accent-color: #000;
+  --input-bg: #fff;
+  --input-text: #111;
 }
 
 body {
   margin: 0;
   padding: 20px;
-  background: #f2f2f2;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  transition: all 0.5s ease;
 }
 
-h1 {
-  text-align: center;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-.container {
+header h1 {
+  margin: 0;
+}
+
+header .theme-controls button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+header .theme-controls button:hover {
+  transform: scale(1.05);
+}
+
+.app {
   max-width: 1000px;
   margin: auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.form-box,
-.preview-box {
-  background: #fff;
+.builder,
+.preview {
+  background: var(--input-bg);
   padding: 20px;
   border-radius: 8px;
-  width: 100%;
+  transition: all 0.5s ease;
 }
 
-.form-box input,
-.form-box textarea {
+.builder input,
+.builder textarea {
   width: 100%;
   padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  border: 1px solid var(--secondary-color);
   border-radius: 5px;
+  background: var(--input-bg);
+  color: var(--input-text);
+  transition: all 0.5s ease;
 }
 
-.form-box textarea {
-  resize: vertical;
-  min-height: 100px;
+.builder input:focus,
+.builder textarea:focus {
+  outline: 2px solid var(--accent-color);
 }
 
-/* HIDDEN INITIALLY */
-.preview-box {
-  display: none;
+.preview {
+  display: none; /* hidden initially */
 }
 
-#downloadBtn {
+#download {
   display: none;
   margin-top: 15px;
-  width: 100%;
-  padding: 12px;
-  background: black;
-  color: white;
+  padding: 10px;
+  background: var(--accent-color);
+  color: var(--input-bg);
   border: none;
-  border-radius: 6px;
   cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
 }
 
-#downloadBtn:hover {
-  opacity: 0.9;
+#download:hover {
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
+  .app {
+    grid-template-columns: 1fr;
   }
 }
