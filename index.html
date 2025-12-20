@@ -5,40 +5,38 @@
   <title>ProResume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- PDF Library -->
+  <!-- PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-
 <body>
 
-  <h1>ProResume Builder</h1>
+  <header>
+    <h1>ProResume</h1>
+    <div class="theme-controls">
+      <button id="toggleMode">🌙 Dark Mode</button>
+      <button id="randomTheme">🎨 Random Theme</button>
+    </div>
+  </header>
 
-  <div class="container">
+  <main class="app">
 
-    <!-- FORM -->
-    <div class="form-box">
-      <input type="text" id="name" placeholder="Full Name">
-      <input type="text" id="job" placeholder="Job Title">
+    <section class="builder">
+      <input id="name" placeholder="Full Name">
+      <input id="role" placeholder="Job Title">
       <textarea id="summary" placeholder="Professional Summary"></textarea>
-    </div>
+    </section>
 
-    <!-- PREVIEW -->
-    <div class="preview-box" id="preview">
-      <h2 id="pName"></h2>
-      <p id="pJob"></p>
-      <hr>
+    <section class="preview" id="preview">
+      <h1 id="pName"></h1>
+      <h3 id="pRole"></h3>
       <p id="pSummary"></p>
+      <button id="download">Download PDF</button>
+    </section>
 
-      <button id="downloadBtn">Download PDF</button>
-    </div>
+  </main>
 
-  </div>
-
-  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
-
