@@ -1,33 +1,39 @@
-const qs = id => document.getElementById(id);
+const bind = (id, target) => {
+  document.getElementById(id).oninput = e =>
+    document.getElementById(target).textContent = e.target.value;
+};
 
-startBtn.onclick = () => builder.classList.remove("hidden");
-
-["name","title","summary","email","phone","experience"].forEach(id => {
-  qs(id).oninput = e => qs("p"+id.charAt(0).toUpperCase()+id.slice(1)).textContent = e.target.value;
-});
+bind("name","pName");
+bind("role","pRole");
+bind("summary","pSummary");
+bind("experience","pExperience");
 
 skills.oninput = e => {
-  pSkills.innerHTML = "";
-  e.target.value.split(",").forEach(s => {
-    const li = document.createElement("li");
-    li.textContent = s.trim();
+  pSkills.innerHTML="";
+  e.target.value.split(",").forEach(s=>{
+    const li=document.createElement("li");
+    li.textContent=s.trim();
     pSkills.appendChild(li);
   });
 };
 
 photo.onchange = () => {
-  const file = photo.files[0];
-  if (file) pPhoto.src = URL.createObjectURL(file);
+  const f=photo.files[0];
+  if(f) pPhoto.src=URL.createObjectURL(f);
 };
 
-function toggleTheme() {
-  document.body.classList.toggle("dark");
-}
+templateSelect.onchange = e => {
+  cv.className = "cv " + e.target.value;
+};
 
 function downloadPDF() {
-  html2pdf().set({
-    margin: 0,
-    filename: "ProResume.pdf",
-    html2canvas: { scale: 2 }
-  }).from(cv).save();
+  window.print();
+}
+
+/* AI SUMMARY (LOCAL, NO API) */
+function generateSummary() {
+  const role = roleInput.value || "professional";
+  summary.value =
+    `Motivated ${role} with strong problem-solving skills, hands-on experience, and a passion for delivering high-quality results in fast-paced environments.`;
+  pSummary.textContent = summary.value;
 }
