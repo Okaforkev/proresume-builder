@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: Inter, system-ui, sans-serif;
 }
 
 body {
@@ -9,9 +9,9 @@ body {
 }
 
 .topbar {
-  padding: 15px 30px;
   background: #020617;
   color: white;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
 }
@@ -26,7 +26,7 @@ body {
 .form {
   background: white;
   padding: 25px;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 .form input,
@@ -39,7 +39,6 @@ body {
 .form button {
   width: 100%;
   padding: 12px;
-  margin-top: 10px;
   border: none;
   cursor: pointer;
 }
@@ -47,14 +46,41 @@ body {
 .ai { background: #6366f1; color: white; }
 .download { background: #16a34a; color: white; }
 
-footer {
+.photo-upload {
   text-align: center;
-  padding: 15px;
+  margin: 15px 0;
+}
+
+.photo-upload input { display: none; }
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.avatar::after {
+  content: "📷";
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.location {
   font-size: 14px;
+  opacity: 0.85;
 }
 
 @media (max-width: 900px) {
-  .app {
-    grid-template-columns: 1fr;
-  }
+  .app { grid-template-columns: 1fr; }
 }
