@@ -1,42 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>ProResume</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="style.css">
-
-  <!-- PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
-    <h1>ProResume</h1>
-    <div class="theme-controls">
-      <button id="toggleMode">🌙 Dark Mode</button>
-      <button id="randomTheme">🎨 Random Theme</button>
+<header>
+  <h1>ProResume</h1>
+  <p>Create a professional CV in minutes</p>
+</header>
+
+<main class="container">
+
+  <!-- FORM -->
+  <section class="form-section">
+    <h2>Enter Your Details</h2>
+
+    <input id="name" placeholder="Full Name" />
+    <input id="title" placeholder="Job Title" />
+    <textarea id="summary" placeholder="Professional Summary"></textarea>
+
+    <input id="email" placeholder="Email" />
+    <input id="phone" placeholder="Phone Number" />
+
+    <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+    <textarea id="experience" placeholder="Experience"></textarea>
+
+    <label class="photo-upload">
+      Upload Photo
+      <input type="file" id="photo" accept="image/*" />
+    </label>
+  </section>
+
+  <!-- PREVIEW -->
+  <section class="cv-preview" id="cv">
+    <div class="left">
+      <img id="previewPhoto" />
+      <h2 id="pName">Your Name</h2>
+      <p id="pTitle">Job Title</p>
+
+      <h3>Contact</h3>
+      <p id="pEmail"></p>
+      <p id="pPhone"></p>
+
+      <h3>Skills</h3>
+      <ul id="pSkills"></ul>
     </div>
-  </header>
 
-  <main class="app">
-
-    <section class="builder">
-      <input id="name" placeholder="Full Name">
-      <input id="role" placeholder="Job Title">
-      <textarea id="summary" placeholder="Professional Summary"></textarea>
-    </section>
-
-    <section class="preview" id="preview">
-      <h1 id="pName"></h1>
-      <h3 id="pRole"></h3>
+    <div class="right">
+      <h3>Profile</h3>
       <p id="pSummary"></p>
-      <button id="download">Download PDF</button>
-    </section>
 
-  </main>
+      <h3>Experience</h3>
+      <p id="pExperience"></p>
+    </div>
+  </section>
 
-  <script src="script.js"></script>
+</main>
+
+<footer>
+  Built by Kev Okafor · 100lv Software Engineering · Call me 09159651463
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
