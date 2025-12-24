@@ -29,22 +29,27 @@
   <h2>Your Details</h2>
 
   <input id="name" placeholder="Full Name">
-  <input id="role" placeholder="Job Title">
+  <input id="role" placeholder="Job Title (e.g Software Engineer)">
+  <input id="location" placeholder="City, Country">
 
   <textarea id="summary" placeholder="Professional Summary"></textarea>
-  <button class="ai" onclick="generateSummary()">✨ AI Generate Summary</button>
+  <button class="ai" id="aiBtn">✨ Generate AI Summary</button>
 
   <input id="email" placeholder="Email">
   <input id="phone" placeholder="Phone">
 
   <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
 
-  <textarea id="experience" placeholder="Experience"></textarea>
+  <textarea id="experience" placeholder="Work Experience (optional)"></textarea>
   <textarea id="education" placeholder="Education"></textarea>
 
-  <textarea id="languages" placeholder="Languages (e.g English:90, French:60)"></textarea>
-
-  <input type="file" id="photo" accept="image/*">
+  <!-- PHOTO -->
+  <div class="photo-upload">
+    <input type="file" id="photo" accept="image/*">
+    <div class="avatar" id="avatar">
+      <span>Upload Photo</span>
+    </div>
+  </div>
 
   <button class="download" onclick="downloadPDF()">Download PDF</button>
 </section>
@@ -55,7 +60,8 @@
   <aside>
     <img id="pPhoto">
     <h2 id="pName">Jane Doe</h2>
-    <p id="pRole">Designer</p>
+    <p id="pRole">Software Engineer</p>
+    <p class="location" id="pLocation">Lagos, Nigeria</p>
 
     <h3>Contact</h3>
     <p id="pEmail"></p>
@@ -63,17 +69,16 @@
 
     <h3>Skills</h3>
     <div id="pSkills"></div>
-
-    <h3>Languages</h3>
-    <div id="pLanguages"></div>
   </aside>
 
   <main>
     <h3>Profile</h3>
     <p id="pSummary"></p>
 
-    <h3>Experience</h3>
-    <p id="pExperience"></p>
+    <div id="experienceSection">
+      <h3>Experience</h3>
+      <p id="pExperience"></p>
+    </div>
 
     <h3>Education</h3>
     <p id="pEducation"></p>
