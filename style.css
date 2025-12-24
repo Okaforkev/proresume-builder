@@ -1,100 +1,95 @@
-:root {
-  --bg-color: #f4f4f4;
-  --text-color: #111;
-  --secondary-color: #555;
-  --accent-color: #000;
-  --input-bg: #fff;
-  --input-text: #111;
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
   margin: 0;
-  padding: 20px;
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: Arial, sans-serif;
-  transition: all 0.5s ease;
+  background: #0f172a;
+  color: #e5e7eb;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  text-align: center;
+  padding: 30px;
+  background: #020617;
 }
 
-header h1 {
-  margin: 0;
-}
-
-header .theme-controls button {
-  margin-left: 10px;
-  padding: 8px 12px;
-  cursor: pointer;
-  border: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-header .theme-controls button:hover {
-  transform: scale(1.05);
-}
-
-.app {
-  max-width: 1000px;
-  margin: auto;
+.container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  padding: 30px;
 }
 
-.builder,
-.preview {
-  background: var(--input-bg);
-  padding: 20px;
-  border-radius: 8px;
-  transition: all 0.5s ease;
+.form-section {
+  background: #020617;
+  padding: 25px;
+  border-radius: 10px;
 }
 
-.builder input,
-.builder textarea {
+.form-section input,
+.form-section textarea {
   width: 100%;
+  margin-bottom: 12px;
   padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid var(--secondary-color);
-  border-radius: 5px;
-  background: var(--input-bg);
-  color: var(--input-text);
-  transition: all 0.5s ease;
-}
-
-.builder input:focus,
-.builder textarea:focus {
-  outline: 2px solid var(--accent-color);
-}
-
-.preview {
-  display: none; /* hidden initially */
-}
-
-#download {
-  display: none;
-  margin-top: 15px;
-  padding: 10px;
-  background: var(--accent-color);
-  color: var(--input-bg);
-  border: none;
-  cursor: pointer;
   border-radius: 6px;
-  transition: transform 0.3s ease;
+  border: none;
+  background: #020617;
+  color: #fff;
+  border: 1px solid #1e293b;
 }
 
-#download:hover {
-  transform: scale(1.05);
+.photo-upload {
+  display: block;
+  padding: 10px;
+  background: #2563eb;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.photo-upload input {
+  display: none;
 }
 
-@media (max-width: 768px) {
-  .app {
-    grid-template-columns: 1fr;
-  }
+/* CV */
+.cv-preview {
+  background: white;
+  color: #111;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  min-height: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.left {
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.left img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.right {
+  padding: 30px;
+}
+
+h3 {
+  margin-top: 20px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #020617;
+  font-size: 14px;
 }
