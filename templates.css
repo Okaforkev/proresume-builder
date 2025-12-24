@@ -1,0 +1,23 @@
+.cv {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+
+/* MODERN */
+.cv.modern aside {
+  background: linear-gradient(180deg,#fca5a5,#fdba74);
+}
+
+/* MINIMAL */
+.cv.minimal aside {
+  background: #f8fafc;
+  color: #000;
+}
+
+/* CREATIVE */
+.cv.creative aside {
+  background: linear-gradient(180deg,#a78bfa,#60a5fa);
+}
