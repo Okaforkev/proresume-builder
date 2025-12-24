@@ -1,37 +1,65 @@
-const bind = (i,o)=>document.getElementById(i).oninput=e=>document.getElementById(o).textContent=e.target.value;
+const $ = id => document.getElementById(id);
 
-bind("name","pName");
-bind("role","pRole");
-bind("summary","pSummary");
-bind("experience","pExperience");
-bind("education","pEducation");
-bind("email","pEmail");
-bind("phone","pPhone");
+/* BASIC BINDINGS */
+$("name").oninput = e => $("pName").textContent = e.target.value;
+$("role").oninput = e => $("pRole").textContent = e.target.value;
+$("location").oninput = e => $("pLocation").textContent = e.target.value;
+$("email").oninput = e => $("pEmail").textContent = e.target.value;
+$("phone").oninput = e => $("pPhone").textContent = e.target.value;
 
-skills.oninput = e => {
-  pSkills.innerHTML="";
-  e.target.value.split(",").forEach(s=>{
-    pSkills.innerHTML += `<div class="bar"><span style="width:80%"></span></div>`;
+/* EDUCATION */
+$("education").oninput = e =>
+  $("pEducation").innerHTML = e.target.value.replace(/\n/g,"<br>");
+
+/* EXPERIENCE (OPTIONAL) */
+$("experience").oninput = e => {
+  if (!e.target.value.trim()) {
+    $("experienceSection").style.display = "none";
+  } else {
+    $("experienceSection").style.display = "block";
+    $("pExperience").innerHTML = e.target.value.replace(/\n/g,"<br>");
+  }
+};
+
+/* SKILLS */
+$("skills").oninput = e => {
+  $("pSkills").innerHTML = "";
+  e.target.value.split(",").forEach(skill => {
+    $("pSkills").innerHTML += `
+      <div class="bar"><span style="width:80%"></span></div>`;
   });
 };
 
-languages.oninput = e => {
-  pLanguages.innerHTML="";
-  e.target.value.split(",").forEach(l=>{
-    const [name,level]=l.split(":");
-    pLanguages.innerHTML += `
-      <small>${name}</small>
-      <div class="bar"><span style="width:${level}%"></span></div>`;
-  });
+/* PHOTO UPLOAD */
+$("avatar").onclick = () => $("photo").click();
+$("photo").onchange = e => {
+  const url = URL.createObjectURL(e.target.files[0]);
+  $("avatar").innerHTML = `<img src="${url}" />`;
+  $("pPhoto").src = url;
 };
 
-photo.onchange=()=>pPhoto.src=URL.createObjectURL(photo.files[0]);
+/* TEMPLATE SWITCH */
+$("templateSelect").onchange = e =>
+  $("cv").className = "cv " + e.target.value;
 
-templateSelect.onchange=e=>cv.className="cv "+e.target.value;
+/* PRINT */
+function downloadPDF() { window.print(); }
 
-function downloadPDF(){ window.print(); }
+/* JOB-SPECIFIC AI SUMMARY */
+$("aiBtn").onclick = () => {
+  const role = $("role").value.toLowerCase();
+  let summary = "";
 
-function generateSummary(){
-  summary.value = "Motivated professional with strong communication skills, hands-on experience, and a results-driven mindset.";
-  pSummary.textContent = summary.value;
-}
+  if (role.includes("engineer")) {
+    summary = "Results-driven software engineer with strong problem-solving skills, hands-on experience building scalable applications, and a passion for clean, efficient code.";
+  } else if (role.includes("designer")) {
+    summary = "Creative designer with a strong eye for detail, experience crafting user-centered designs, and the ability to translate ideas into visually compelling solutions.";
+  } else if (role.includes("manager")) {
+    summary = "Strategic manager with proven leadership skills, experience driving team performance, and a track record of delivering results in fast-paced environments.";
+  } else {
+    summary = "Motivated professional with strong communication skills, adaptability, and a results-oriented mindset focused on delivering high-quality outcomes.";
+  }
+
+  $("summary").value = summary;
+  $("pSummary").textContent = summary;
+};
