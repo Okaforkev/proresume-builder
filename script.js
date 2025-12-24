@@ -1,39 +1,37 @@
-const bind = (id, target) => {
-  document.getElementById(id).oninput = e =>
-    document.getElementById(target).textContent = e.target.value;
-};
+const bind = (i,o)=>document.getElementById(i).oninput=e=>document.getElementById(o).textContent=e.target.value;
 
 bind("name","pName");
 bind("role","pRole");
 bind("summary","pSummary");
 bind("experience","pExperience");
+bind("education","pEducation");
+bind("email","pEmail");
+bind("phone","pPhone");
 
 skills.oninput = e => {
   pSkills.innerHTML="";
   e.target.value.split(",").forEach(s=>{
-    const li=document.createElement("li");
-    li.textContent=s.trim();
-    pSkills.appendChild(li);
+    pSkills.innerHTML += `<div class="bar"><span style="width:80%"></span></div>`;
   });
 };
 
-photo.onchange = () => {
-  const f=photo.files[0];
-  if(f) pPhoto.src=URL.createObjectURL(f);
+languages.oninput = e => {
+  pLanguages.innerHTML="";
+  e.target.value.split(",").forEach(l=>{
+    const [name,level]=l.split(":");
+    pLanguages.innerHTML += `
+      <small>${name}</small>
+      <div class="bar"><span style="width:${level}%"></span></div>`;
+  });
 };
 
-templateSelect.onchange = e => {
-  cv.className = "cv " + e.target.value;
-};
+photo.onchange=()=>pPhoto.src=URL.createObjectURL(photo.files[0]);
 
-function downloadPDF() {
-  window.print();
-}
+templateSelect.onchange=e=>cv.className="cv "+e.target.value;
 
-/* AI SUMMARY (LOCAL, NO API) */
-function generateSummary() {
-  const role = roleInput.value || "professional";
-  summary.value =
-    `Motivated ${role} with strong problem-solving skills, hands-on experience, and a passion for delivering high-quality results in fast-paced environments.`;
+function downloadPDF(){ window.print(); }
+
+function generateSummary(){
+  summary.value = "Motivated professional with strong communication skills, hands-on experience, and a results-driven mindset.";
   pSummary.textContent = summary.value;
 }
