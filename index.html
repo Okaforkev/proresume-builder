@@ -2,42 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ProResume</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>ProResume — Build a Job-Winning CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.ico.ico">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>ProResume</h1>
-  <p>Create a professional CV in minutes</p>
+<!-- HERO -->
+<header class="hero">
+  <h1>Build a professional CV that gets interviews</h1>
+  <p>Create a polished resume in minutes — no design skills needed.</p>
+  <button id="startBtn">Start Building</button>
 </header>
 
-<main class="container">
+<!-- BUILDER -->
+<section class="builder hidden" id="builder">
 
   <!-- FORM -->
-  <section class="form-section">
-    <h2>Enter Your Details</h2>
+  <div class="form-card">
+    <h2>Your Details</h2>
 
-    <input id="name" placeholder="Full Name" />
-    <input id="title" placeholder="Job Title" />
+    <input id="name" placeholder="Full Name">
+    <input id="title" placeholder="Job Title">
     <textarea id="summary" placeholder="Professional Summary"></textarea>
 
-    <input id="email" placeholder="Email" />
-    <input id="phone" placeholder="Phone Number" />
+    <input id="email" placeholder="Email">
+    <input id="phone" placeholder="Phone">
 
     <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
-    <textarea id="experience" placeholder="Experience"></textarea>
+    <textarea id="experience" placeholder="Work Experience"></textarea>
 
-    <label class="photo-upload">
+    <label class="upload">
       Upload Photo
-      <input type="file" id="photo" accept="image/*" />
+      <input type="file" id="photo" accept="image/*">
     </label>
-  </section>
+
+    <div class="actions">
+      <button onclick="toggleTheme()">Toggle Theme</button>
+      <button onclick="downloadPDF()">Download PDF</button>
+    </div>
+  </div>
 
   <!-- PREVIEW -->
-  <section class="cv-preview" id="cv">
-    <div class="left">
-      <img id="previewPhoto" />
+  <div class="cv" id="cv">
+    <aside>
+      <img id="pPhoto">
       <h2 id="pName">Your Name</h2>
       <p id="pTitle">Job Title</p>
 
@@ -47,23 +60,24 @@
 
       <h3>Skills</h3>
       <ul id="pSkills"></ul>
-    </div>
+    </aside>
 
-    <div class="right">
+    <main>
       <h3>Profile</h3>
       <p id="pSummary"></p>
 
       <h3>Experience</h3>
       <p id="pExperience"></p>
-    </div>
-  </section>
+    </main>
+  </div>
 
-</main>
+</section>
 
 <footer>
   Built by Kev Okafor · 100lv Software Engineering · Call me 09159651463
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
