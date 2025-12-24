@@ -1,133 +1,60 @@
-:root {
-  --bg: #f8fafc;
-  --dark: #020617;
-  --accent: #2563eb;
-  --card: white;
-}
-
-body.dark {
-  --bg: #020617;
-  --card: #020617;
-  color: #e5e7eb;
-}
-
 * {
   box-sizing: border-box;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: #f8fafc;
 }
 
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #020617, #0f172a);
-  color: white;
-}
-
-.hero button {
+.topbar {
   padding: 15px 30px;
-  background: var(--accent);
-  border: none;
-  border-radius: 8px;
+  background: #020617;
   color: white;
-  font-size: 16px;
-  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
-.builder {
+.app {
   display: grid;
   grid-template-columns: 420px 1fr;
   gap: 30px;
-  padding: 40px;
+  padding: 30px;
 }
 
-.hidden {
-  display: none;
-}
-
-.form-card {
-  background: var(--card);
+.form {
+  background: white;
   padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+  border-radius: 12px;
 }
 
-.form-card input,
-.form-card textarea {
+.form input,
+.form textarea {
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #cbd5f5;
 }
 
-.upload {
-  display: block;
-  padding: 10px;
-  background: var(--accent);
-  color: white;
-  text-align: center;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.upload input {
-  display: none;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.actions button {
-  flex: 1;
-  padding: 10px;
-  border-radius: 8px;
+.form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
   border: none;
   cursor: pointer;
 }
 
-/* CV */
-.cv {
-  background: white;
-  display: grid;
-  grid-template-columns: 35% 65%;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-aside {
-  background: #0f172a;
-  color: white;
-  padding: 25px;
-  text-align: center;
-}
-
-aside img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-main {
-  padding: 30px;
-}
-
-h3 {
-  margin-top: 25px;
-  border-bottom: 2px solid #e5e7eb;
-}
+.ai { background: #6366f1; color: white; }
+.download { background: #16a34a; color: white; }
 
 footer {
   text-align: center;
   padding: 15px;
   font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
 }
