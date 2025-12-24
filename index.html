@@ -9,16 +9,16 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="templates.css">
 <link rel="stylesheet" href="print.css">
-
 </head>
+
 <body>
 
 <header class="topbar">
   <h1>ProResume</h1>
   <select id="templateSelect">
     <option value="modern">Modern</option>
-    <option value="minimal">Minimal</option>
     <option value="creative">Creative</option>
+    <option value="minimal">Minimal</option>
   </select>
 </header>
 
@@ -32,28 +32,40 @@
   <input id="role" placeholder="Job Title">
 
   <textarea id="summary" placeholder="Professional Summary"></textarea>
-  <button onclick="generateSummary()">✨ AI Generate Summary</button>
+  <button class="ai" onclick="generateSummary()">✨ AI Generate Summary</button>
 
   <input id="email" placeholder="Email">
   <input id="phone" placeholder="Phone">
 
   <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+
   <textarea id="experience" placeholder="Experience"></textarea>
+  <textarea id="education" placeholder="Education"></textarea>
+
+  <textarea id="languages" placeholder="Languages (e.g English:90, French:60)"></textarea>
 
   <input type="file" id="photo" accept="image/*">
 
-  <button onclick="downloadPDF()">Download PDF</button>
+  <button class="download" onclick="downloadPDF()">Download PDF</button>
 </section>
 
-<!-- CV PREVIEW -->
+<!-- CV -->
 <section class="cv modern" id="cv">
+
   <aside>
     <img id="pPhoto">
     <h2 id="pName">Jane Doe</h2>
     <p id="pRole">Designer</p>
 
+    <h3>Contact</h3>
+    <p id="pEmail"></p>
+    <p id="pPhone"></p>
+
     <h3>Skills</h3>
-    <ul id="pSkills"></ul>
+    <div id="pSkills"></div>
+
+    <h3>Languages</h3>
+    <div id="pLanguages"></div>
   </aside>
 
   <main>
@@ -62,9 +74,12 @@
 
     <h3>Experience</h3>
     <p id="pExperience"></p>
-  </main>
-</section>
 
+    <h3>Education</h3>
+    <p id="pEducation"></p>
+  </main>
+
+</section>
 </div>
 
 <footer>
@@ -74,4 +89,3 @@ Built by Kev Okafor · 100lv Software Engineering · Call me 09159651463
 <script src="script.js"></script>
 </body>
 </html>
-
