@@ -1,95 +1,133 @@
+:root {
+  --bg: #f8fafc;
+  --dark: #020617;
+  --accent: #2563eb;
+  --card: white;
+}
+
+body.dark {
+  --bg: #020617;
+  --card: #020617;
+  color: #e5e7eb;
+}
+
 * {
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: Inter, system-ui, sans-serif;
 }
 
 body {
   margin: 0;
-  background: #0f172a;
-  color: #e5e7eb;
+  background: var(--bg);
 }
 
-header {
+.hero {
   text-align: center;
-  padding: 30px;
-  background: #020617;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: white;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 30px;
-  padding: 30px;
-}
-
-.form-section {
-  background: #020617;
-  padding: 25px;
-  border-radius: 10px;
-}
-
-.form-section input,
-.form-section textarea {
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 10px;
-  border-radius: 6px;
+.hero button {
+  padding: 15px 30px;
+  background: var(--accent);
   border: none;
-  background: #020617;
-  color: #fff;
-  border: 1px solid #1e293b;
-}
-
-.photo-upload {
-  display: block;
-  padding: 10px;
-  background: #2563eb;
-  text-align: center;
-  border-radius: 6px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
 }
-.photo-upload input {
+
+.builder {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 30px;
+  padding: 40px;
+}
+
+.hidden {
   display: none;
 }
 
+.form-card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+}
+
+.form-card input,
+.form-card textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+}
+
+.upload {
+  display: block;
+  padding: 10px;
+  background: var(--accent);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.upload input {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
 /* CV */
-.cv-preview {
+.cv {
   background: white;
-  color: #111;
   display: grid;
   grid-template-columns: 35% 65%;
-  min-height: 600px;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.left {
+aside {
   background: #0f172a;
   color: white;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
 }
 
-.left img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
+aside img {
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 10px;
 }
 
-.right {
+main {
   padding: 30px;
 }
 
 h3 {
-  margin-top: 20px;
+  margin-top: 25px;
   border-bottom: 2px solid #e5e7eb;
 }
 
 footer {
   text-align: center;
   padding: 15px;
-  background: #020617;
   font-size: 14px;
 }
