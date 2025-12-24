@@ -1,23 +1,33 @@
-const bind = (id, callback) =>
-  document.getElementById(id).addEventListener("input", callback);
+const qs = id => document.getElementById(id);
 
-bind("name", e => pName.textContent = e.target.value);
-bind("title", e => pTitle.textContent = e.target.value);
-bind("summary", e => pSummary.textContent = e.target.value);
-bind("email", e => pEmail.textContent = e.target.value);
-bind("phone", e => pPhone.textContent = e.target.value);
-bind("experience", e => pExperience.textContent = e.target.value);
+startBtn.onclick = () => builder.classList.remove("hidden");
 
-bind("skills", e => {
+["name","title","summary","email","phone","experience"].forEach(id => {
+  qs(id).oninput = e => qs("p"+id.charAt(0).toUpperCase()+id.slice(1)).textContent = e.target.value;
+});
+
+skills.oninput = e => {
   pSkills.innerHTML = "";
-  e.target.value.split(",").forEach(skill => {
+  e.target.value.split(",").forEach(s => {
     const li = document.createElement("li");
-    li.textContent = skill.trim();
+    li.textContent = s.trim();
     pSkills.appendChild(li);
   });
-});
+};
 
-photo.addEventListener("change", () => {
+photo.onchange = () => {
   const file = photo.files[0];
-  if (file) previewPhoto.src = URL.createObjectURL(file);
-});
+  if (file) pPhoto.src = URL.createObjectURL(file);
+};
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+
+function downloadPDF() {
+  html2pdf().set({
+    margin: 0,
+    filename: "ProResume.pdf",
+    html2canvas: { scale: 2 }
+  }).from(cv).save();
+}
