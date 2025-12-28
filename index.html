@@ -44,12 +44,12 @@
   <textarea id="education" placeholder="Education"></textarea>
 
   <!-- PHOTO -->
-  <div class="photo-upload">
-    <input type="file" id="photo" accept="image/*">
-    <div class="avatar" id="avatar">
-      <span>Upload Photo</span>
-    </div>
-  </div>
+<div class="profile-pic">
+  <img id="profileImage" src="assets/default-avatar.png" alt="Profile Picture">
+  <input type="file" id="imageUpload" accept="image/*" hidden>
+  <label for="imageUpload" class="upload-btn">Upload Photo</label>
+</div>
+
 
   <button class="download" onclick="downloadPDF()">Download PDF</button>
 </section>
@@ -94,3 +94,4 @@ Built by Kev Okafor · 100lv Software Engineering · Call me 09159651463
 <script src="script.js"></script>
 </body>
 </html>
+
