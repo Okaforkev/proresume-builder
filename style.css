@@ -97,5 +97,48 @@ body {
   object-fit: cover;
   object-position: center;
 }
+.photo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.photo-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: #f0f2f5;
+  border: 2px solid #ddd;
+}
+
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* 🔥 Auto-crop */
+  object-position: center;
+}
+
+.photo-circle input {
+  display: none;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  background: #1a73e8; /* Gmail blue */
+  color: white;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
