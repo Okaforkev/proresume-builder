@@ -1,12 +1,10 @@
-body {
-  background: white;
-}
-
-.resume {
-  box-shadow: none;
-}
-
-.resume-photo {
-  width: 90px;
-  height: 90px;
+@media print {
+  body * { visibility: hidden; }
+  .cv, .cv * { visibility: visible; }
+  .cv {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
 }
