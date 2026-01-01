@@ -1,21 +1,12 @@
-@media print {
-  body * { visibility: hidden; }
-  .cv, .cv * { visibility: visible; }
-  .cv {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 0;
-  }
-  .profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
+body {
+  background: white;
 }
 
-.profile-pic img {
-  object-fit: cover;
+.resume {
+  box-shadow: none;
 }
 
+.resume-photo {
+  width: 90px;
+  height: 90px;
 }
