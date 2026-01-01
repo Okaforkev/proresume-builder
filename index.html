@@ -44,15 +44,13 @@
   <textarea id="education" placeholder="Education"></textarea>
 
   <!-- PHOTO -->
-<div class="profile-pic">
-  <img id="profileImage" src="assets/default-avatar.png" alt="Profile Picture">
-  <input type="file" id="imageUpload" accept="image/*" hidden>
-  <label for="imageUpload" class="upload-btn">Upload Photo</label>
+<div class="photo-wrapper">
+  <label class="photo-circle">
+    <img id="profileImage" src="assets/default-avatar.png" alt="Profile Photo">
+    <span class="camera-icon">📷</span>
+    <input type="file" id="imageUpload" accept="image/*">
+  </label>
 </div>
-
-
-  <button class="download" onclick="downloadPDF()">Download PDF</button>
-</section>
 
 <!-- CV -->
 <section class="cv modern" id="cv">
@@ -94,4 +92,5 @@ Built by Kev Okafor · 100lv Software Engineering · Call me 09159651463
 <script src="script.js"></script>
 </body>
 </html>
+
 
