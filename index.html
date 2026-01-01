@@ -1,51 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ProResume</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="print.css" media="print">
-  <link rel="stylesheet" href="templates.css">
+<meta charset="UTF-8">
+<title>ProResume</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico.ico">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="templates.css">
+<link rel="stylesheet" href="print.css">
 </head>
+
 <body>
 
-  <div class="container">
+<header class="topbar">
+  <h1>ProResume</h1>
+  <select id="templateSelect">
+    <option value="modern">Modern</option>
+    <option value="creative">Creative</option>
+    <option value="minimal">Minimal</option>
+  </select>
+</header>
 
-    <!-- FORM SIDE -->
-    <div class="form-panel">
+<div class="app">
 
-      <div class="photo-wrapper">
-        <label class="photo-circle">
-          <img id="profileImage" src="assets/default-avatar.png" alt="Profile">
-          <span class="camera-icon">📷</span>
-          <input type="file" id="imageUpload" accept="image/*">
-        </label>
-      </div>
+<!-- FORM -->
+<section class="form">
+  <h2>Your Details</h2>
 
-      <input type="text" id="fullNameInput" placeholder="Full Name">
-      <input type="text" id="titleInput" placeholder="Professional Title">
+  <input id="name" placeholder="Full Name">
+  <input id="role" placeholder="Job Title (e.g Software Engineer)">
+  <input id="location" placeholder="City, Country">
 
+  <textarea id="summary" placeholder="Professional Summary"></textarea>
+  <button class="ai" id="aiBtn">✨ Generate AI Summary</button>
+
+  <input id="email" placeholder="Email">
+  <input id="phone" placeholder="Phone">
+
+  <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+
+  <textarea id="experience" placeholder="Work Experience (optional)"></textarea>
+  <textarea id="education" placeholder="Education"></textarea>
+
+  <!-- PHOTO -->
+  <div class="photo-upload">
+    <input type="file" id="photo" accept="image/*">
+    <div class="avatar" id="avatar">
+      <span>Upload Photo</span>
     </div>
-
-    <!-- PREVIEW SIDE -->
-    <div class="preview-panel">
-      <div class="resume">
-        <div class="resume-header">
-          <div class="resume-photo">
-            <img id="previewImage" src="assets/default-avatar.png">
-          </div>
-          <div>
-            <h1 id="fullNamePreview">Your Name</h1>
-            <p id="titlePreview">Your Title</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <script src="style.js"></script>
+  <button class="download" onclick="downloadPDF()">Download PDF</button>
+</section>
+
+<!-- CV -->
+<section class="cv modern" id="cv">
+
+  <aside>
+    <img id="pPhoto">
+    <h2 id="pName">Jane Doe</h2>
+    <p id="pRole">Software Engineer</p>
+    <p class="location" id="pLocation">Lagos, Nigeria</p>
+
+    <h3>Contact</h3>
+    <p id="pEmail"></p>
+    <p id="pPhone"></p>
+
+    <h3>Skills</h3>
+    <div id="pSkills"></div>
+  </aside>
+
+  <main>
+    <h3>Profile</h3>
+    <p id="pSummary"></p>
+
+    <div id="experienceSection">
+      <h3>Experience</h3>
+      <p id="pExperience"></p>
+    </div>
+
+    <h3>Education</h3>
+    <p id="pEducation"></p>
+  </main>
+
+</section>
+</div>
+
+<footer>
+Built by Kev Okafor · 100lv Software Engineering · Call me 09159651463
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
-
-
