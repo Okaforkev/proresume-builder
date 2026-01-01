@@ -31,12 +31,24 @@ $("skills").oninput = e => {
 };
 
 /* PHOTO UPLOAD */
-$("avatar").onclick = () => $("photo").click();
-$("photo").onchange = e => {
-  const url = URL.createObjectURL(e.target.files[0]);
-  $("avatar").innerHTML = `<img src="${url}" />`;
-  $("pPhoto").src = url;
-};
+const imageUpload = document.getElementById("imageUpload");
+const profileImage = document.getElementById("profileImage");
+
+imageUpload.addEventListener("change", () => {
+  const file = imageUpload.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please select an image file");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    profileImage.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+});
 
 /* TEMPLATE SWITCH */
 $("templateSelect").onchange = e =>
@@ -63,3 +75,4 @@ $("aiBtn").onclick = () => {
   $("summary").value = summary;
   $("pSummary").textContent = summary;
 };
+
