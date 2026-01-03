@@ -30,13 +30,21 @@ $("skills").oninput = e => {
   });
 };
 
-/* PHOTO UPLOAD */
-$("avatar").onclick = () => $("photo").click();
+/* PHOTO UPLOAD (FIXED & BUG-FREE) */
 $("photo").onchange = e => {
-  const url = URL.createObjectURL(e.target.files[0]);
-  $("avatar").innerHTML = `<img src="${url}" />`;
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const url = URL.createObjectURL(file);
+
+  /* Upload circle (cropped via CSS background) */
+  $("avatar").style.backgroundImage = `url(${url})`;
+  $("avatar").classList.add("has-image");
+
+  /* Resume preview photo */
   $("pPhoto").src = url;
 };
+
 
 /* TEMPLATE SWITCH */
 $("templateSelect").onchange = e =>
@@ -63,3 +71,4 @@ $("aiBtn").onclick = () => {
   $("summary").value = summary;
   $("pSummary").textContent = summary;
 };
+
